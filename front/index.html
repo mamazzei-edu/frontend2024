@@ -23,17 +23,40 @@ initial-scale=1">
 
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-4">
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-4">
                     <input type="text" class="form-control" id="tituloInput" placeholder="Título do filme">
                     <label for="tituloInput">Título do filme</label>
                 </div>
             </div>
             <div class="col-md-8 col-lg-4">
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-4">
                     <input type="text" class="form-control" id="sinopseInput" placeholder="Sinopse do filme">
                     <label for="sinopseInput">Sinopse do filme</label>
                 </div>
             </div>
+
+            <div class="col-md-8 col-lg-4">
+                <div class="form-floating mb-4">
+                    <input type="number" min="1880" max="2024" class="form-control" id="anoInput" placeholder="Ano de lançamento do filme">
+                    <label for="anoInput">Ano de lançamento do filme do filme</label>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-4">
+                <div class="form-floating mb-4">
+                    <select class="form-select" aria-label="Classificação do filme entre Excelente e Péssimo" id="selectClassificacao">
+                        <option value="">Selecione um valor</option>
+                        <option value="5">Excelente</option>
+                        <option value="4">Bom</option>
+                        <option value="3">Regular</option>
+                        <option value="2">Ruim</option>
+                        <option value="1">Péssimo</option>
+                    </select>
+                    <label for="selectClassificacao">Classificação do filme</label>
+                </div>
+            </div>
+
+
+
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -50,6 +73,8 @@ initial-scale=1">
                         <tr>
                             <th>Título</th>
                             <th>Sinopse</th>
+                            <th>Data de lançamento</th>
+                            <th>Classificação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +88,7 @@ initial-scale=1">
 
 
     <!-- também importamos nosso arquivo javascript -->
-    <script src="js/script.js"></script>
+    <script src="js/frontend.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </body>
