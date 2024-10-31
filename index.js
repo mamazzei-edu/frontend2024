@@ -1,8 +1,27 @@
+// 
 const express = require ('express')
 const cors = require('cors')
 const app = express()
+const mongoose = require("mongoose")
+require("dotenv").config()
+URI = process.env.MONGODB_URL
+
+
 app.use(express.json())
 app.use(cors())
+
+const Filme = mongoose.model ("Filme", mongoose.Schema({
+        titulo: {type: String},
+        sinopse: {type: String}
+    }
+))
+
+async function conectarAoMongoDB() {
+    await
+       mongoose.connect(URI)
+}
+        
+
 
 let filmes = [
     {
@@ -40,4 +59,15 @@ app.post("/filmes", (req, res) => {
         
 
 
-app.listen(3000, () => console.log("up and running"))
+// app.listen(3000, () => console.log("up and running"))
+
+app.listen(3000, () => {
+    try{
+        conectarAoMongoDB()
+        console.log("up and running")
+    }
+    catch (e){
+        console.log('Erro', e)
+    }
+})
+    
