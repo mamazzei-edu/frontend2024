@@ -7,7 +7,29 @@ const fazerLogin = async () => {
     let usuarioLogin = usuarioLoginInput.value
     let passwordLogin = passwordLoginInput.value
     if (usuarioLogin && passwordLogin) {
-        //já já fazemos isso
+
+        try {
+            const loginEndpoint = '/login'
+            const URLCompleta = `${protocolo}${baseURL}${loginEndpoint}`
+            const response = await axios.post(
+                URLCompleta,
+                {login: usuarioLogin,password: passwordLogin }
+            )
+            usuarioLoginInput.value = ""
+            passwordLoginInput.value = ""
+            exibirAlerta('.alert-modal-login', "Login efetuado com sucesso!",
+            ['show', 'alert-success'], ['d-none', 'alert-danger'], 2000)
+            ocultarModal('#modalLogin', 2000)     
+            const loginLink = document.querySelector('#loginLink')
+            loginLink.innerHTML = "Logout"
+            const cadastrarFilmeButton = document.querySelector('#cadastrarFilmeButton')
+            cadastrarFilmeButton.disabled = false
+                        
+        } catch (error) {
+            exibirAlerta('.alert-modal-login', "Erro ao fazer login", ['show',
+            'alert-danger'], ['d-none', 'alert-success'], 2000)
+            
+        }
     } else{
         exibirAlerta('.alert-modal-login', 'Preencha todos os campos', ['show','alert-danger'], ['d-none', 'alert-success'], 2000)
     }
