@@ -26,8 +26,7 @@ usuarioSchema.plugin(uniqueValidator)
 const Usuario = mongoose.model("Usuario", usuarioSchema)
 
 async function conectarAoMongoDB() {
-    await
-       mongoose.connect(URI)
+    await mongoose.connect(URI)
 }    
 
 //GET http://localhost:3000/hey
